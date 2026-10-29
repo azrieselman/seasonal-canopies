@@ -1,0 +1,15 @@
+{
+  "required": false,
+  "minVersion": "0.8",
+  "package": "dev.tyty.seasonalcanopies.mixin",
+  "plugin": "dev.tyty.seasonalcanopies.mixin.SeasonalCanopiesMixinPlugin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [],
+  "client": [
+    "BlockColorsMixin",
+    "DynamicLeavesBlockMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 0
+  }
+}

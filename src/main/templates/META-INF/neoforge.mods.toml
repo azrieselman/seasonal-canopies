@@ -1,0 +1,47 @@
+modLoader="javafml"
+loaderVersion="${loader_version_range}"
+license="${mod_license}"
+issueTrackerURL="https://github.com/azrieselman/seasonal-canopies/issues"
+
+[[mods]]
+modId="${mod_id}"
+version="${mod_version}"
+displayName="${mod_name}"
+displayURL="https://github.com/azrieselman/seasonal-canopies"
+authors="azrieselman"
+description='''
+Dynamic Trees foliage shifts color with the season and sheds leaf particles, more heavily in autumn. Serene Seasons is optional. Vanilla leaves, grass, and crops are left alone.
+'''
+
+[[mixins]]
+config="${mod_id}.mixins.json"
+
+[[dependencies.${mod_id}]]
+modId="neoforge"
+type="required"
+versionRange="[${neo_version},)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="minecraft"
+type="required"
+versionRange="${minecraft_version_range}"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="dynamictrees"
+type="optional"
+versionRange="[1.7,2.0)"
+ordering="AFTER"
+side="BOTH"
+reason="Leaf tint and extra shed particles apply only to Dynamic Trees foliage."
+
+[[dependencies.${mod_id}]]
+modId="sereneseasons"
+type="optional"
+versionRange="[10.1,11.0)"
+ordering="AFTER"
+side="BOTH"
+reason="When present, the current Serene Seasons season drives the tint. Otherwise a day calendar is used."
