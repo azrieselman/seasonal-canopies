@@ -1,4 +1,5 @@
-@if not exist "%~dp0gradle\wrapper\gradle-wrapper.jar" certutil -f -decode "%~dp0gradle\wrapper\gradle-wrapper.jar.b64" "%~dp0gradle\wrapper\gradle-wrapper.jar" >NUL
+@if not exist "%~dp0gradle\wrapper\gradle-wrapper.jar" if exist "%~dp0gradle\wrapper\gradle-wrapper.jar.b64" certutil -f -decode "%~dp0gradle\wrapper\gradle-wrapper.jar.b64" "%~dp0gradle\wrapper\gradle-wrapper.jar" >NUL
+@if not exist "%~dp0gradle\wrapper\gradle-wrapper.jar" curl -fsSL -o "%~dp0gradle\wrapper\gradle-wrapper.jar" "https://github.com/gradle/gradle/raw/v9.2.1/gradle/wrapper/gradle-wrapper.jar"
 @rem
 @rem Copyright 2015 the original author or authors.
 @rem
