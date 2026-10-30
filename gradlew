@@ -1,10 +1,23 @@
 #!/bin/sh
-# Restore the wrapper jar from the text copy when the binary is not in the checkout.
+# The wrapper jar is not stored in git. Restore it from the text copy, or download the Gradle 9.2.1 wrapper.
 _sc_dir=$(CDPATH= cd -- "$(dirname "$0")" && pwd) || exit 1
-if [ ! -s "$_sc_dir/gradle/wrapper/gradle-wrapper.jar" ] && [ -f "$_sc_dir/gradle/wrapper/gradle-wrapper.jar.b64" ]; then
-    base64 -d "$_sc_dir/gradle/wrapper/gradle-wrapper.jar.b64" > "$_sc_dir/gradle/wrapper/gradle-wrapper.jar" || exit 1
+_sc_jar="$_sc_dir/gradle/wrapper/gradle-wrapper.jar"
+if [ ! -s "$_sc_jar" ]; then
+    if [ -f "$_sc_dir/gradle/wrapper/gradle-wrapper.jar.b64" ]; then
+        base64 -d "$_sc_dir/gradle/wrapper/gradle-wrapper.jar.b64" > "$_sc_jar" || exit 1
+    else
+        _sc_url="https://github.com/gradle/gradle/raw/v9.2.1/gradle/wrapper/gradle-wrapper.jar"
+        if command -v curl >/dev/null 2>&1; then
+            curl -fsSL -o "$_sc_jar" "$_sc_url" || exit 1
+        elif command -v wget >/dev/null 2>&1; then
+            wget -q -O "$_sc_jar" "$_sc_url" || exit 1
+        else
+            echo "gradle-wrapper.jar is missing, and neither curl nor wget is available." >&2
+            exit 1
+        fi
+    fi
 fi
-unset _sc_dir
+unset _sc_dir _sc_jar _sc_url
 
 
 #
