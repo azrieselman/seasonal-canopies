@@ -54,7 +54,7 @@ The same screen is under Mods, Seasonal Canopies, Config.
 Dynamic Trees 1.7.2 and Serene Seasons 10.1.0.9 are `compileOnly` dependencies from Modrinth. They are not shaded into the jar.
 
 ```
-./gradlew build
+bash gradlew build
 ```
 
-The Gradle wrapper jar is not committed. `./gradlew` downloads the Gradle 9.2.1 wrapper the first time it runs, then Gradle downloads its own distribution. The mod jar is written to `build/libs/`.
+On Windows, run `gradlew.bat build`. The wrapper jar is not committed. The script downloads the Gradle 9.2.1 wrapper the first time it runs, then Gradle downloads its own distribution. The mod jar is written to `build/libs/`.
