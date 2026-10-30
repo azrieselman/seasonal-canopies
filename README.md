@@ -7,7 +7,7 @@ Vanilla leaves, grass, and crops are not recolored. Tree growth, drops, and worl
 ## Requirements
 
 - Minecraft 1.21.1
-- NeoForge 21.1.265 or newer
+- NeoForge 21.1.1 or newer
 - Java 21
 
 Dynamic Trees is optional. Without it, the mod still loads and has nothing to tint. Serene Seasons is optional. When it is installed, its current season is used. When it is not, the mod counts in-game days: spring, summer, autumn, then winter.
