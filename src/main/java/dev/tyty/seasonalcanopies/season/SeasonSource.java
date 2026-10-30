@@ -11,6 +11,11 @@ public final class SeasonSource {
     private SeasonSource() {
     }
 
+    /** Seasonal tint and leaf shed apply only in the overworld. */
+    public static boolean affects(Level level) {
+        return level.dimension() == Level.OVERWORLD;
+    }
+
     public static SeasonKind get(Level level) {
         if (SERENE_SEASONS) {
             return SereneSeasonsSeason.get(level);

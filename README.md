@@ -2,7 +2,7 @@
 
 A small NeoForge 1.21.1 mod. Dynamic Trees leaves change color with the season and shed leaf particles. Autumn sheds the most. The other seasons shed a little.
 
-Vanilla leaves, grass, and crops are not recolored. Tree growth, drops, and worldgen are left alone.
+Vanilla leaves, grass, and crops are not recolored. Tree growth, drops, and worldgen are left alone. Only overworld canopies change. Nether, End, and other dimensions are left as Dynamic Trees drew them.
 
 ## Requirements
 

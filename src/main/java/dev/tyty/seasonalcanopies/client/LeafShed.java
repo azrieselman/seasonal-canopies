@@ -15,7 +15,7 @@ public final class LeafShed {
     }
 
     public static void trySpawn(Level level, BlockPos pos, BlockState state, RandomSource random) {
-        if (!level.isClientSide() || state.isAir()) {
+        if (!level.isClientSide() || state.isAir() || !SeasonSource.affects(level)) {
             return;
         }
         float amount = SeasonalCanopiesConfig.PARTICLE_AMOUNT.get().floatValue();

@@ -27,7 +27,7 @@ public final class DynamicTreesLeafTint {
             return color;
         }
         Level world = level instanceof Level typed ? typed : Minecraft.getInstance().level;
-        if (world == null) {
+        if (world == null || !SeasonSource.affects(world)) {
             return color & 0xFFFFFF;
         }
         return SeasonTint.apply(color & 0xFFFFFF, SeasonSource.get(world));
