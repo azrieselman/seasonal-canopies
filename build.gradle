@@ -178,6 +178,22 @@ publishing {
     }
 }
 
+def generatedResources = layout.buildDirectory.dir("generated/resources")
+def leafTexture = layout.buildDirectory.file("generated/resources/assets/seasonalcanopies/textures/particle/falling_leaf.png")
+def generateLeafTexture = tasks.register("generateLeafTexture") {
+    outputs.file(leafTexture)
+    doLast {
+        def out = leafTexture.get().asFile
+        out.parentFile.mkdirs()
+        // Checked in as text so the repository does not need a binary asset.
+        out.bytes = "iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAARUlEQVR42mNgoAV48+nZM3RMkWaiDSKkGa8huBT/hwKChuDTTNAAUjWTZADR4UBsAFLFAIqikaKERJ+kjM0QijIVA60BABmavp5zOOyfAAAAAElFTkSuQmCC".decodeBase64()
+    }
+}
+sourceSets.main.resources.srcDir(generatedResources)
+tasks.named("processResources").configure {
+    dependsOn(generateLeafTexture)
+}
+
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
 }
